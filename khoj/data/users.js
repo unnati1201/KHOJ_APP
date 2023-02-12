@@ -1,0 +1,22 @@
+export const USERS = [
+    {
+        name:'Ishika',
+        profileImage:require('../assets/profile.png'),
+    },
+    {
+        name:'Priyanshu',
+        profileImage:require('../assets/profile.png'),
+    },
+    {
+        name:'Unnati',
+        profileImage:require('../assets/profile.png'),
+    },
+    {
+        name:'Kritika',
+        profileImage:require('../assets/profile.png'),
+    },
+    {
+        name:'Arinjay',
+        profileImage:require('../assets/profile.png'),
+    },
+]
