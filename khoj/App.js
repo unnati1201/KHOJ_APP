@@ -14,6 +14,7 @@ import EditPage from './components/Profile/EditPage';
 import Footer from './components/Footer';
 import ExplorePage from './components/ExplorePage/ExplorePage';
 import ChatPage from './components/travelMate/ChatPage';
+import FindBuddy from './components/travelMate/FindBuddy';
 // import {app} from './firebase'
 // import { initializeApp } from "firebase/app";
 
@@ -76,6 +77,10 @@ export default function App() {
         <Stack.Screen
           name="TravelMate"
           component={ChatPage}
+        />
+        <Stack.Screen
+          name="FindBuddy"
+          component={FindBuddy}
         />
       </Stack.Navigator>
     </NavigationContainer>

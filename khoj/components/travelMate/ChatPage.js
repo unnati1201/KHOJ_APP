@@ -47,7 +47,7 @@ const ChatPage = ({navigation}) => {
 const Header = ({navigateOption}) => (
     <View style={styles.headerContainer}>
         <Text style={styles.headerText}>TRAVEL MATE</Text>
-        <TouchableOpacity  style={{flex:1}}>
+        <TouchableOpacity  style={{flex:1}} onPress={() => navigateOption.navigate("FindBuddy")}>
             <Icon name="addusergroup" size={25} color="#003585"></Icon>
         </TouchableOpacity>
     </View>
