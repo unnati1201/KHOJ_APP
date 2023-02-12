@@ -23,7 +23,7 @@ function Footer({active, uid, navigateOption}) {
             color: active !== 'profile' ? '#5d7ba8' : '#FFF4E0'
         },
         groupIcon: {
-            color: active !== 'setting' ? '#5d7ba8' : '#FFF4E0'
+            color: active !== 'travelMate' ? '#5d7ba8' : '#FFF4E0'
         },
         font: {
             fontSize: 11,
@@ -49,7 +49,7 @@ function Footer({active, uid, navigateOption}) {
                 <FontAwesomeIcon name='user-o' size={17} style={styles.profileIcon}/>
                 <Text style={[styles.font, styles.profileIcon]}>Profile</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.iconStyle}>
+            <TouchableOpacity style={styles.iconStyle} onPress={() => navigateOption.navigate("TravelMate")}>
                 <FontAwesomeIcon name='group' size={20} style={styles.groupIcon}></FontAwesomeIcon>
                 <Text style={[styles.font, styles.groupIcon]}>TravelMate</Text>
             </TouchableOpacity>

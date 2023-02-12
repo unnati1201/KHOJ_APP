@@ -1,14 +1,26 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, TextInput, FlatList} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Divider } from 'react-native-elements';
 import FontContainer from '../FontContainer';
 import Icon from 'react-native-vector-icons/AntDesign';
 import SearchBar from '../SearchBar';
+import { auth } from "../../firebase"
+import { onAuthStateChanged } from 'firebase/auth';
+import Footer from "../Footer";
 
 const data=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 const ChatPage = ({navigation}) => {
+    const [uid, setUid] = useState('');
+    onAuthStateChanged(auth, (user) => {
+        if(user){
+            setUid(user.uid)
+        }else{
+          console.log("signed out")
+        }
+      })
+
   return (
     <FontContainer>
         <SafeAreaView style={{backgroundColor:'#FFFFFF', flex: 1}}>
@@ -25,6 +37,7 @@ const ChatPage = ({navigation}) => {
                     )
                 }}
                 />
+                <Footer active='travelMate' uid={uid} navigateOption={navigation}></Footer>
             </View>
         </SafeAreaView>
         </FontContainer>

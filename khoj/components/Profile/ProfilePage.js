@@ -103,12 +103,7 @@ export default function ProfilePage({navigation, route}){
         <Layout>
             <View width='100%' height='100%'>
             <ScrollView width="100%" nestedScrollEnabled={true}>
-                <View height={60} style={{justifyContent: 'center', marginHorizontal: 10, flexDirection: 'row', alignItems: 'center'}}>
-                    <TouchableOpacity style={{position: 'absolute', left: 10}} onPress={() => navigation.navigate("Explore")}>
-                        <Icon name="left" size={20} color="#003585"/>
-                    </TouchableOpacity>
-                    <Text style={styles.headerText}>PROFILE</Text>
-                </View>
+                <Header/>
                 <View style={styles.profileheader}>
                     <View style={{alignItems: 'center'}}>
                         <ProfileImage source={profileUrl}/>
@@ -215,6 +210,12 @@ export default function ProfilePage({navigation, route}){
     )
 }
 
+const Header = () => (
+    <View style={styles.headerContainer}>
+        <Text style={styles.headerText}>PROFILE</Text>
+    </View>
+)
+
 const styles = StyleSheet.create({
     profileheader: {
         justifyContent: 'space-between',
@@ -266,10 +267,16 @@ const styles = StyleSheet.create({
         margin: 2,
         marginBottom: 0
     },
+    headerContainer:{
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop:10,
+        marginBottom:10,
+    },
     headerText:{
         color:'#003585',
         fontSize:20,
-        marginLeft: 5,
-        fontFamily:'NunitoBlack'
-     }
+        fontFamily:'NunitoBlack',
+     },
 })

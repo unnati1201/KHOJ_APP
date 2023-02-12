@@ -5,6 +5,7 @@ import { useState } from "react"
 import { auth } from "../../firebase"
 import { onAuthStateChanged } from 'firebase/auth';
 import Tags from "../explore/Tags"
+import SearchBar from "../SearchBar"
 
 const ExplorePage = ({navigation}) => {
     const [uid, setUid] = useState('');
@@ -50,9 +51,8 @@ const ExplorePage = ({navigation}) => {
     return (
         <Layout>
             <View width='100%' height='100%'>
-            <View height={60} style={{justifyContent: 'center', marginHorizontal: 10, flexDirection: 'row', alignItems: 'center'}}>
-                <Text style={styles.headerText}>EXPLORE</Text>
-            </View>
+            <Header/>
+            <SearchBar />
             <Tags filterPosts={filterPosts}/>
             <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', marginHorizontal: 3}}>
                 <FlatList 
@@ -79,14 +79,25 @@ const ExplorePage = ({navigation}) => {
     )
 } 
 
+const Header = () => (
+    <View style={styles.headerContainer}>
+        <Text style={styles.headerText}>EXPLORE</Text>
+    </View>
+)
+
 const styles = StyleSheet.create({
+    headerContainer:{
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop:10,
+    },
     headerText:{
         color:'#003585',
         fontSize:20,
-        marginLeft: 5,
-        fontFamily:'NunitoBlack'
+        fontFamily:'NunitoBlack',
      },
-     images: {
+    images: {
         height: (Dimensions.get('window').width-20)/3,
         width: (Dimensions.get('window').width-20)/3,
         margin: 2,
