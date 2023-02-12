@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native'
+import {View, Text, StyleSheet, TouchableOpacity, Image, Dimensions} from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign'
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
@@ -11,7 +11,7 @@ function Footer({active, uid, navigateOption}) {
             justifyContent: 'space-around',
             alignItems: 'center',
             backgroundColor: '#003585',
-            paddingVertical:10,
+            // paddingVertical:10,
         },
         homeIcon: {
             color: active !== 'home' ? '#5d7ba8' : '#FFF4E0'
@@ -32,6 +32,8 @@ function Footer({active, uid, navigateOption}) {
         },
         iconStyle: {
             alignItems: 'center',
+            paddingVertical:10,
+            paddingHorizontal:Dimensions.get("window").width/8,
         }
     })
 
@@ -39,19 +41,19 @@ function Footer({active, uid, navigateOption}) {
         <View style={styles.footerStyle}>
             <TouchableOpacity style={styles.iconStyle} onPress={() => navigateOption.navigate("Explore")}>
                 <Icon name='home' size={20} color='grey' style={styles.homeIcon}></Icon>
-                <Text style={[styles.font, styles.homeIcon]}>Home</Text>
+                {/* <Text style={[styles.font, styles.homeIcon]}>Home</Text> */}
             </TouchableOpacity>
             <TouchableOpacity style={styles.iconStyle} onPress={() => navigateOption.navigate("ExplorePage")}>
                 <FontAwesomeIcon name='binoculars' size={17} style={styles.exploreIcon}/>
-                <Text style={[styles.font, styles.exploreIcon]}>Explore</Text>
+                {/* <Text style={[styles.font, styles.exploreIcon]}>Explore</Text> */}
             </TouchableOpacity>
             <TouchableOpacity style={styles.iconStyle} onPress={() => navigateOption.navigate("Profile",{authorUid: uid})}>
                 <FontAwesomeIcon name='user-o' size={17} style={styles.profileIcon}/>
-                <Text style={[styles.font, styles.profileIcon]}>Profile</Text>
+                {/* <Text style={[styles.font, styles.profileIcon]}>Profile</Text> */}
             </TouchableOpacity>
             <TouchableOpacity style={styles.iconStyle} onPress={() => navigateOption.navigate("TravelMate")}>
                 <FontAwesomeIcon name='group' size={20} style={styles.groupIcon}></FontAwesomeIcon>
-                <Text style={[styles.font, styles.groupIcon]}>TravelMate</Text>
+                {/* <Text style={[styles.font, styles.groupIcon]}>TravelMate</Text> */}
             </TouchableOpacity>
         </View>
     )
