@@ -117,14 +117,14 @@ const PostUploader = (props) => {
 
   return (
     <View>
-    <ScrollView style={{height:'89%'}}>
+    <ScrollView style={{height:'88%'}}>
         <View style={styles.outer}>
                 <TouchableOpacity onPress={pickImage}>
                     <Image source={postImage ? {uri: postImage} : placeHolderImg} style={styles.photo}/>
                 </TouchableOpacity>
                 <View style={styles.inner}>
                     <TextInput 
-                    style={{color: '#003585', fontSize: 20, marginBottom:10, fontFamily:'Nunito-Medium'}}
+                    style={{color: '#003585', fontSize: 17, marginBottom:15, fontFamily:'Nunito-Medium'}}
                     placeholder='Write a heading' 
                     placeholderTextColor='#5d7ba8'
                     multiline={true}
