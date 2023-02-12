@@ -41,7 +41,7 @@ function Footer({active, uid, navigateOption}) {
                 <Icon name='home' size={20} color='grey' style={styles.homeIcon}></Icon>
                 <Text style={[styles.font, styles.homeIcon]}>Home</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.iconStyle}>
+            <TouchableOpacity style={styles.iconStyle} onPress={() => navigateOption.navigate("ExplorePage")}>
                 <FontAwesomeIcon name='binoculars' size={17} style={styles.exploreIcon}/>
                 <Text style={[styles.font, styles.exploreIcon]}>Explore</Text>
             </TouchableOpacity>
