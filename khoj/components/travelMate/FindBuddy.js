@@ -3,13 +3,28 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Layout from "../Layout";
 import {useRef, useState} from 'react'
 import Icon from 'react-native-vector-icons/AntDesign'
+import { auth } from "../../firebase"
+import { onAuthStateChanged } from 'firebase/auth';
 
 const FindBuddy = ({navigation}) => {
+
+    const [uid, setUid] = useState('');
+    onAuthStateChanged(auth, (user) => {
+        if(user){
+            setUid(user.uid)
+        }else{
+          console.log("signed out")
+        }
+    })
+
     return (
         <Layout>
             <Header navigateOption={navigation}/>
-            <ImageBackground source={require('../../assets/Map.jpg')} style={styles.image}>
+            <ImageBackground source={require('../../assets/Map.jpg')} style={styles.image} imageStyle={{opacity:0.2}}>
                 <View style={styles.radar}>
+
+                </View>
+                <View style={styles.buddyArea}>
                     <Buddy top={Math.floor(Math.random()*200)} left={Math.floor(Math.random()*200)}/>
                     <Buddy top={Math.floor(Math.random()*200)} left={Math.floor(Math.random()*200)}/>
                     <Buddy top={Math.floor(Math.random()*200)} left={Math.floor(Math.random()*200)}/>
@@ -86,15 +101,24 @@ const styles = StyleSheet.create({
      image: {
         height: Dimensions.get('window').height-50,
         width: Dimensions.get('window').width,
-        opacity: 0.6,
+        // opacity: 0.6,
       },
       radar: {
         height: Dimensions.get('window').width-40,
         width: Dimensions.get('window').width-40,
         backgroundColor: '#FEBA02',
         borderRadius: 200,
+        opacity:0.6,
         marginTop: ((Dimensions.get('window').height-40)/2)-((Dimensions.get('window').width-40)/2)-40,
         marginLeft: ((Dimensions.get('window').width)/2)-((Dimensions.get('window').width-40)/2),
+      },
+      buddyArea: {
+        height: Dimensions.get('window').width-40,
+        width: Dimensions.get('window').width-40,
+        borderRadius: 200,
+        marginTop: ((Dimensions.get('window').height-40)/2)-((Dimensions.get('window').width-40)/2)-40,
+        marginLeft: ((Dimensions.get('window').width)/2)-((Dimensions.get('window').width-40)/2),
+        position:'absolute',
       },
       centeredView: {
         flex: 1,

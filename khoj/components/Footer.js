@@ -10,20 +10,21 @@ function Footer({active, uid, navigateOption}) {
             flexDirection:'row',
             justifyContent: 'space-around',
             alignItems: 'center',
-            backgroundColor: '#003585',
-            // paddingVertical:10,
+            backgroundColor: '#FFFFFF',
+            borderTopColor:'#92acd4',
+            borderTopWidth:0.2,
         },
         homeIcon: {
-            color: active !== 'home' ? '#5d7ba8' : '#FFF4E0'
+            color: active !== 'home' ? '#92acd4' : '#003585'
         },
         exploreIcon: {
-            color: active !== 'explore' ? '#5d7ba8' : '#FFF4E0'
+            color: active !== 'explore' ? '#92acd4' : '#003585'
         },
         profileIcon: {
-            color: active !== 'profile' ? '#5d7ba8' : '#FFF4E0'
+            color: active !== 'profile' ? '#92acd4' : '#003585'
         },
         groupIcon: {
-            color: active !== 'travelMate' ? '#5d7ba8' : '#FFF4E0'
+            color: active !== 'travelMate' ? '#92acd4' : '#003585'
         },
         font: {
             fontSize: 11,
@@ -48,7 +49,7 @@ function Footer({active, uid, navigateOption}) {
                 {/* <Text style={[styles.font, styles.exploreIcon]}>Explore</Text> */}
             </TouchableOpacity>
             <TouchableOpacity style={styles.iconStyle} onPress={() => navigateOption.navigate("Profile",{authorUid: uid})}>
-                <FontAwesomeIcon name='user-o' size={17} style={styles.profileIcon}/>
+                <FontAwesomeIcon name='user-o' size={19} style={styles.profileIcon}/>
                 {/* <Text style={[styles.font, styles.profileIcon]}>Profile</Text> */}
             </TouchableOpacity>
             <TouchableOpacity style={styles.iconStyle} onPress={() => navigateOption.navigate("TravelMate")}>

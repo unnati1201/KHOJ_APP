@@ -8,10 +8,12 @@ import SearchBar from '../SearchBar';
 import { auth } from "../../firebase"
 import { onAuthStateChanged } from 'firebase/auth';
 import Footer from "../Footer";
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import { USERS } from '../../data/users';
 
-const data=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+// const data=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-const ChatPage = ({navigation}) => {
+const Requests = ({navigation}) => {
     const [uid, setUid] = useState('');
     onAuthStateChanged(auth, (user) => {
         if(user){
@@ -26,14 +28,13 @@ const ChatPage = ({navigation}) => {
         <SafeAreaView style={{backgroundColor:'#FFFFFF', flex: 1}}>
             <View style={styles.container}>
                 <Header navigateOption={navigation}/>
-                <SearchBar />
                 <FlatList
                 numColumns={1}
-                data={data}
+                data={USERS}
                 // extraData={allComments}
                 renderItem={({item}) => {
                     return (
-                        <Comments/>
+                        <BuddyRequests username={item.username} name={item.name}/>
                     )
                 }}
                 />
@@ -46,28 +47,40 @@ const ChatPage = ({navigation}) => {
 
 const Header = ({navigateOption}) => (
     <View style={styles.headerContainer}>
-        <Text style={styles.headerText}>TRAVEL MATE</Text>
-        <TouchableOpacity  style={{flex:1}} onPress={()=>navigateOption.navigate("FindBuddy")}>
-            <Icon name="addusergroup" size={25} color="#003585"></Icon>
+        <TouchableOpacity onPress={() => navigateOption.navigate("TravelMate")} style={{flex:1}}>
+            {/* <Image source={require('../../assets/back.png')} style={{width: 20, height: 20}}/> */}
+            <Icon name="left" size={20} color="#003585"/>
         </TouchableOpacity>
+        <Text style={styles.headerText}>BUDDY REQUESTS</Text>
     </View>
 )
 
-const Comments = () => {
+const BuddyRequests = ({username, name}) => {
+
+    const [requestAccept, setRequestAccept] = useState(false);
+
 return (
     <View style={{marginTop:10}}>
-    <View style={{flexDirection:'row', marginBottom:10}}>
-        <View style={{flex:1}}>
+    <View style={{flexDirection:'row', marginBottom:5}}>
+        <View>
             <Image source={require('../../assets/profile.png')} style={{margin:10, width: 50, height: 50, backgroundColor:'#D9D9D9', borderRadius:50}}/>
         </View>
-        <TouchableOpacity style={{flex: 4}}>
             <View style={{marginTop:5, marginLeft:10}}>
+            <TouchableOpacity>
                 <Text style={{color:'#2B3A55', marginBottom:10, marginTop:5, fontSize:15}}>
-                    <Text style={{fontFamily:'Nunito-XBold', color:'#003585'}}>the_explorer</Text>
+                    <Text style={{fontFamily:'Nunito-XBold', color:'#003585'}}>{username}</Text>
                 </Text>
-                <Text style={{color:'#149DE1', marginBottom:15, fontSize:12, fontFamily:'Nunito-Medium'}}>Unnati</Text>
+            </TouchableOpacity>
+                <Text style={{color:'#149DE1', marginBottom:15, fontSize:12, fontFamily:'Nunito-Medium'}}>{name}</Text>
             </View>
-        </TouchableOpacity>
+            <View style={{flex:1, alignItems:'flex-end', marginRight:10, justifyContent:'flex-end', flexDirection:'row', alignItems:'center'}}>
+                <TouchableOpacity>
+                    <Icon name='close' size={20} color="red" style={{paddingHorizontal:10, paddingVertical:10}}/>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Icon name='check' size={20} color="green" style={{paddingHorizontal:10, paddingVertical:10}}/>
+                </TouchableOpacity>
+            </View>
     </View>
     <Divider width={1} orientation='vertical'/>
 </View>
@@ -83,17 +96,24 @@ headerContainer:{
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
-  marginLeft:10,
+  marginHorizontal:10,
+  marginBottom:20
 },
 headerText:{
    color:'#003585',
    fontSize:20,
-   marginRight: 15,
    fontFamily:'NunitoBlack',
    flex:6,
    textAlign: "center",
-   marginLeft: 50,
+   marginRight:20
+},
+button: {
+    alignItems: 'center',
+    padding: 10,
+    width: 90,
+    margin: 10,
+    borderRadius: 10,
 },
 });
 
-export default ChatPage
+export default Requests
