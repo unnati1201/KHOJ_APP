@@ -12,6 +12,7 @@ import SignupPage from './components/Authentication/SignupPage';
 import ProfilePage from './components/Profile/ProfilePage';
 import EditPage from './components/Profile/EditPage';
 import Footer from './components/Footer';
+import ExplorePage from './components/ExplorePage/ExplorePage';
 // import {app} from './firebase'
 // import { initializeApp } from "firebase/app";
 
@@ -50,6 +51,10 @@ export default function App() {
         <Stack.Screen
           name="Explore"
           component={ExploreScreen}
+        />
+        <Stack.Screen
+          name="ExplorePage"
+          component={ExplorePage}
         />
         <Stack.Screen
           name="Add Post"
